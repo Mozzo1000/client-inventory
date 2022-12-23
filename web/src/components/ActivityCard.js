@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Card, CardContent, Grid, Typography, Box, CircularProgress, IconButton, Skeleton } from '@mui/material'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import StatsService from '../services/stats.service';
+import useAlert from './Alerts/useAlert';
 
 function CircularProgressWithLabel(props) {
     return (
@@ -29,6 +30,7 @@ function CircularProgressWithLabel(props) {
 
 function ActivityCard() {
     const [stats, setStats] = useState();
+    const snackbar = useAlert();
 
     useEffect(() => {
         StatsService.get().then(
@@ -42,7 +44,7 @@ function ActivityCard() {
                         error.response.data.message) ||
                     error.message ||
                     error.toString();
-                console.log(resMessage);
+                snackbar.showError(resMessage);
             }
         );
     }, []);

@@ -5,10 +5,13 @@ import LaptopIcon from '@mui/icons-material/Laptop';
 import { Card, Grid, CardContent, Table, TableBody, TableCell, TableRow, TableContainer, Typography, CircularProgress, Tooltip } from "@mui/material";
 import { Container } from "@mui/system";
 import { Duration, DateTime } from 'luxon';
+import useAlert from '../components/Alerts/useAlert';
 
 function ClientPage(props) {
     let { id } = useParams();
     const [client, setClient] = useState();
+    const snackbar = useAlert();
+
     if (!id) {
         id = props.id;
     }
@@ -24,7 +27,7 @@ function ClientPage(props) {
                         error.response.data.message) ||
                     error.message ||
                     error.toString();
-                console.log(resMessage);
+                snackbar.showError(resMessage);
             }
         );
     }, [id]);
@@ -104,7 +107,6 @@ function ClientPage(props) {
                                                 <TableCell>{client.uuid}</TableCell>
                                             </TableRow>
                                         </TableBody>
-
                                     </Table>
                                 </TableContainer>
                             </CardContent>

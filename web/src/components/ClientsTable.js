@@ -9,11 +9,13 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Link } from 'react-router-dom';
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import StyledBadge from './StyledBadge';
+import useAlert from './Alerts/useAlert';
 
 function ClientsTable(props) {
     const [clients, setClients] = useState({});
     const [openDrawer, setOpenDrawer] = useState(false);
     const [openedID, setOpenedID] = useState();
+    const snackbar = useAlert();
 
     const handleOpenDrawer = () => {
         setOpenDrawer(true);
@@ -64,7 +66,7 @@ function ClientsTable(props) {
                             error.response.data.message) ||
                         error.message ||
                         error.toString();
-                    console.log(resMessage);
+                    snackbar.showError(resMessage);
                 }
             );
         } else {
@@ -79,7 +81,7 @@ function ClientsTable(props) {
                             error.response.data.message) ||
                         error.message ||
                         error.toString();
-                    console.log(resMessage);
+                    snackbar.showError(resMessage);
                 }
             );
         }
@@ -112,7 +114,6 @@ function ClientsTable(props) {
                                     pageSize={5}
                                     rowsPerPageOptions={[5]}
                                     disableSelectionOnClick
-
                                     loading={!clients.length}
                                 />
                             </Box>
