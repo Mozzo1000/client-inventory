@@ -15,24 +15,27 @@ function ClientPage(props) {
     if (!id) {
         id = props.id;
     }
+
     useEffect(() => {
-        ClientsService.get(id).then(
-            (response) => {
-                setClient(response.data);
-                if (!Object.keys(response.data).length) {
-                    snackbar.showError("Client does not exist")
+        if (id) {
+            ClientsService.get(id).then(
+                (response) => {
+                    setClient(response.data);
+                    if (!Object.keys(response.data).length) {
+                        snackbar.showError("Client does not exist")
+                    }
+                },
+                (error) => {
+                    const resMessage =
+                        (error.response &&
+                            error.response.data &&
+                            error.response.data.message) ||
+                        error.message ||
+                        error.toString();
+                    snackbar.showError(resMessage);
                 }
-            },
-            (error) => {
-                const resMessage =
-                    (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                    error.message ||
-                    error.toString();
-                snackbar.showError(resMessage);
-            }
-        );
+            );
+        }
     }, [id]);
 
     return (
