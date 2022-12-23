@@ -114,7 +114,6 @@ function ClientsTable(props) {
                                     pageSize={5}
                                     rowsPerPageOptions={[5]}
                                     disableSelectionOnClick
-                                    loading={!clients.length}
                                 />
                             </Box>
                         </Grid>
