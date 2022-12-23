@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Mozzo1000/client-inventory">
-    <span style="font-size: 80px">💻</span>
+    <img src="assets/logo.svg" height="120px" width="120px"/>
   </a>
 
 <h3 align="center">Client Inventory</h3>
