@@ -1,0 +1,15 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  db:
+    image: "postgres" # use latest official postgres version
+    ports:
+      - 5432:5432
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgres-db:/var/lib/postgresql/data # persist data even if container shuts down
+
+volumes:
+  postgres-db:
