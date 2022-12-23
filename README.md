@@ -8,7 +8,7 @@
 <h3 align="center">Client Inventory</h3>
 
   <p align="center">
-    A management tool for keeping an inventory of all your managed computers.
+    A management tool for keeping track of all your managed computers.
     <br />
     <a href="https://github.com/Mozzo1000/inventory/wiki"><strong>Explore the docs »</strong></a>
     <br />
