@@ -19,7 +19,7 @@ function ClientPage(props) {
         ClientsService.get(id).then(
             (response) => {
                 setClient(response.data);
-                if (!response.data.length) {
+                if (!Object.keys(response.data).length) {
                     snackbar.showError("Client does not exist")
                 }
             },
@@ -54,7 +54,7 @@ function ClientPage(props) {
                                                         Last seen
                                                     </TableCell>
                                                     <TableCell>
-                                                        {client?.length ? (
+                                                        {client && Object.keys(client).length ? (
                                                             client.last_updated
                                                         ) : (
                                                             <Skeleton variant="rectangle" width={100} />
@@ -67,7 +67,7 @@ function ClientPage(props) {
                                                     </TableCell>
                                                     <Tooltip title="(days:hours:minutes)">
                                                         <TableCell>
-                                                            {client?.length ? (
+                                                            {client && Object.keys(client).length ? (
                                                                 Duration.fromObject({ seconds: client.uptime }).toFormat("dd:hh:mm")
                                                             ) : (
                                                                 <Skeleton variant="rectangle" width={100} />
@@ -80,7 +80,7 @@ function ClientPage(props) {
                                                     <TableCell>Registration date</TableCell>
                                                     <Tooltip title={client?.created_at}>
                                                         <TableCell>
-                                                            {client?.length ? (
+                                                            {client && Object.keys(client).length ? (
                                                                 DateTime.fromISO(client.created_at).toRelativeCalendar()
                                                             ) : (
                                                                 <Skeleton variant="rectangle" width={100} />
@@ -106,7 +106,7 @@ function ClientPage(props) {
                                         <TableRow>
                                             <TableCell>Manufacturer</TableCell>
                                             <TableCell>
-                                                {client?.length ? (
+                                                {client && Object.keys(client).length ? (
                                                     client.hardware[0].manufacturer
                                                 ) : (
                                                     <Skeleton variant="rectangle" width={100} />
@@ -116,7 +116,7 @@ function ClientPage(props) {
                                         <TableRow>
                                             <TableCell>Product name</TableCell>
                                             <TableCell>
-                                                {client?.length ? (
+                                                {client && Object.keys(client).length ? (
                                                     client.hardware[0].product_name
                                                 ) : (
                                                     <Skeleton variant="rectangle" width={100} />
@@ -126,7 +126,7 @@ function ClientPage(props) {
                                         <TableRow>
                                             <TableCell>Serial number</TableCell>
                                             <TableCell>
-                                                {client?.length ? (
+                                                {client && Object.keys(client).length ? (
                                                     client.hardware[0].serial
                                                 ) : (
                                                     <Skeleton variant="rectangle" width={100} />
@@ -136,7 +136,7 @@ function ClientPage(props) {
                                         <TableRow>
                                             <TableCell>UUID</TableCell>
                                             <TableCell>
-                                                {client?.length ? (
+                                                {client && Object.keys(client).length ? (
                                                     client.uuid
                                                 ) : (
                                                     <Skeleton variant="rectangle" width={100} />
