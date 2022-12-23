@@ -11,7 +11,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import StyledBadge from './StyledBadge';
 
 function ClientsTable(props) {
-    const [clients, setClients] = useState();
+    const [clients, setClients] = useState({});
     const [openDrawer, setOpenDrawer] = useState(false);
     const [openedID, setOpenedID] = useState();
 
@@ -106,21 +106,17 @@ function ClientsTable(props) {
                         </Grid>
                         <Grid item xs={12}>
                             <Box sx={{ height: 400, width: "100%" }}>
-                                {clients ? (
-                                    <DataGrid
-                                        rows={clients}
-                                        columns={columns}
-                                        pageSize={5}
-                                        rowsPerPageOptions={[5]}
-                                        disableSelectionOnClick
-                                    />
-                                ) : (
-                                    <CircularProgress />
-                                )}
+                                <DataGrid
+                                    rows={clients}
+                                    columns={columns}
+                                    pageSize={5}
+                                    rowsPerPageOptions={[5]}
+                                    disableSelectionOnClick
+                                    loading
+                                />
                             </Box>
                         </Grid>
                     </Grid>
-
                 </CardContent>
             </Card >
             <Drawer anchor="right" open={openDrawer} onClose={handleCloseDrawer}>
