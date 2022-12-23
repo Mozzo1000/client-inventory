@@ -22,7 +22,7 @@ function ClientsTable(props) {
     };
     const handleCloseDrawer = () => {
         setOpenDrawer(false);
-        setOpenedID();
+        setOpenedID(null);
     };
 
     const columns = [
