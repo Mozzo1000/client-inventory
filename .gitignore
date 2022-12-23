@@ -1,4 +1,1 @@
-/LICENSE
-/agent.sh
-/server
-/web
+*.pyc
